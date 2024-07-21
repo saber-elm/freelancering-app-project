@@ -1,15 +1,28 @@
-import { HiCollection, HiHome } from "react-icons/hi";
+import {
+  HiCollection,
+  HiHome,
+  HiOutlineInformationCircle,
+  HiUser,
+} from "react-icons/hi";
 import AppLayout from "../../ui/AppLayout";
 import CustomNavLink from "../../ui/CustomNavLink";
 import Sidebar from "../../ui/Sidebar";
 
-function OwnerLayout() {
+function AdminLayout() {
   return (
     <AppLayout>
       <Sidebar>
         <CustomNavLink to="dashboard">
           <HiHome />
           <span>داشبورد</span>
+        </CustomNavLink>
+        <CustomNavLink to="users">
+          <HiUser />
+          <span>کاربران</span>
+        </CustomNavLink>
+        <CustomNavLink to="proposals">
+          <HiOutlineInformationCircle />
+          <span>درخواست ها</span>
         </CustomNavLink>
         <CustomNavLink to="projects">
           <HiCollection />
@@ -20,4 +33,4 @@ function OwnerLayout() {
   );
 }
 
-export default OwnerLayout;
+export default AdminLayout;
