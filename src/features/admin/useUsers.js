@@ -6,7 +6,6 @@ export default function useUsers() {
     queryKey: ["users"],
     queryFn: getUsersApi,
   });
-  console.log(data);
   const { users } = data || {};
   return { isLoading, users };
 }

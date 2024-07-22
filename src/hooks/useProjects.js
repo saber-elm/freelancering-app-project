@@ -8,7 +8,6 @@ export default function useProjects() {
   // const queryObject = queryString.parse(search);
 
   const queryObject = Object.fromEntries(new URLSearchParams(search));
-  console.log(queryObject);
 
   const { data, isLoading } = useQuery({
     queryKey: ["projects", queryObject],
