@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form";
-import RHFSelect from "../../ui/RHFSelect";
-import useChangeProposalStatus from "./useChangeProposalStatus";
+import RHFSelect from "../../../ui/RHFSelect";
+import useChangeUserStatus from "./useChangeUserStatus";
 import { useQueryClient } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import Loading from "../../ui/Loading";
+import Loading from "../../../ui/Loading";
 
 const options = [
   {
@@ -20,21 +19,20 @@ const options = [
   },
 ];
 
-function ChangeProposalStatus({ proposalId, onClose }) {
-  const { id: projectId } = useParams();
+function ChangeUserStatus({ userId, onClose }) {
   const { register, handleSubmit } = useForm();
-  const { changeProposalStatus, isChanging } = useChangeProposalStatus();
+  const { changeUserStatus, isChanging } = useChangeUserStatus();
   const queryClient = useQueryClient();
 
   const onSubmit = (data) => {
-    changeProposalStatus(
-      { proposalId, projectId, ...data },
+    changeUserStatus(
+      { userId, data },
       {
         onSuccess: () => {
           onClose();
 
           queryClient.invalidateQueries({
-            queryKey: ["project", projectId],
+            queryKey: ["users"],
           });
         },
       }
@@ -64,5 +62,4 @@ function ChangeProposalStatus({ proposalId, onClose }) {
     </div>
   );
 }
-
-export default ChangeProposalStatus;
+export default ChangeUserStatus;
